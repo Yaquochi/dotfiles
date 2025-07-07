@@ -139,7 +139,7 @@ echo "=== Приложения поставлены в автозапуск ==="
 # 10. Настройка pipewire для аудиокарты
 echo "Настройка pipewire под аудиокарту Audient iD4 Mk2..."
 mkdir -p ~/.config/pipewire
-cp ./pipewire.conf ~/.config/pipewire/pipewire.conf
+cp ./sound/pipewire.conf ~/.config/pipewire/pipewire.conf
 echo "=== Аудиокарта настроена ==="
 
 # 11. Настройка firefox
