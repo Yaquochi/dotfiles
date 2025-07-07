@@ -139,7 +139,7 @@ if [ "$STEP" -lt 9 ]; then
 fi
 
 # Автостарт приложений
-    if [ "$STEP" -lt 10 ]; then
+if [ "$STEP" -lt 10 ]; then
     echo "Настройка автозапуска..."
     mkdir -p ~/.config/autostart
     # EasyEffects service (фоновый режим)
