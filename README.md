@@ -15,5 +15,13 @@ import shp9500.txt in easyeffects in eq tab in apo import
 #Fonts
 download and mv roboto and robotomono in ~/.local/share/fonts
 
+#Extensions
+cd extensions
+cp -r * ~/.local/share/gnome-shell/extensions
+
 #Programs
-kitty, git, easyeffects, tweaks, extension-manager, hiddify, telegram, obsidian, virtual machine maanger,  qbittorent, obs, discord, vscode.
+dconf, kitty, git, easyeffects, tweaks, extension-manager, hiddify, telegram, obsidian, virtual machine maanger, onlyoffice, qbittorent, obs, discord, vscode
+
+#Script
+# Перед использованием прогреем sudo для дальнейшего удобства через sudo -v, затем /.install.sh
+# Скачиваем приложения, потом все из папок растаскиваем по директориям, не забываем про authostart, далее надо установить все драйвера, в фаерфокс дополнить pref.js

@@ -26,9 +26,6 @@ unset rc
 
 export LIBVIRT_DEFAULT_URI='qemu:///system'
 
-export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:~/go/bin
-
 export TERM=xterm-256color
 export VISUAL=vi
 export EDITOR="$VISUAL"
