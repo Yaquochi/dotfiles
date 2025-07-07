@@ -30,7 +30,7 @@ if [ "$STEP" -lt 2 ]; then
 fi
 
 # Установка пакетов
-if [ "$STEP" -lt 2 ]; then
+if [ "$STEP" -lt 3 ]; then
     echo "Установка нужных пакетов..."
     sudo dnf install -y flatpak kitty easyeffects gnome-tweaks gimp qbittorrent lollypop
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
