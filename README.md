@@ -7,3 +7,5 @@
 После установки в tweaks выбрать шрифты Roboto для первых двух и RobotoMono Nerd Font Mono для последнего пункта. Также в tweaks в клавиатуре выбрать переключение языка через capslock
 
 Добавить в easyeffects конфиг с эквалайзером
+
+Удалить через software parental controls
