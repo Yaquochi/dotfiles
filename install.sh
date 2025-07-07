@@ -199,6 +199,11 @@ else
   echo "!!! prefs.js не найден. Возможно, Firefox не запускался !!!"
 fi
 
+# Перенос картинок
+echo "Перенос картинок..."
+cp -r ./pics/* ~/Pictures 
+echo "=== Картинки перемещены  ==="
+
 # Удаление стандартного терминала
 echo "Удаление ptyxis..."
 sudo dnf remove -y ptyxis
