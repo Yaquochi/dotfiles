@@ -1,3 +1,8 @@
+1) git clone https://github.com/Yaquochi/dotfiles#
+2) cd dotfiles
+3) sudo chmod +x install.sh
+4) ./install.sh
+
 #Kitty
 copy and paste kitty.conf and current-theme.conf in ~/.config/kitty
 
