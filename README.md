@@ -1,4 +1,4 @@
-1) git clone https://github.com/Yaquochi/dotfiles#
+1) git clone https://github.com/Yaquochi/dotfiles.git
 2) cd dotfiles
 3) sudo chmod +x install.sh
 4) ./install.sh
