@@ -19,7 +19,6 @@ echo "=== Программы успешно удалены ==="
 echo "[1/5] Установка нужных пакетов..."
 sudo dnf install -y flatpak kitty easyeffects gnome-tweaks gimp qbittorrent lollypop
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-echo "=== Программы успешно установлены ==="
 
 #Extension Manager
 flatpak install -y flathub com.mattjakeman.ExtensionManager
@@ -50,3 +49,38 @@ flatpak install -y flathub com.github.johnfactotum.Foliate
 sudo dnf install -y @virtualization
 sudo systemctl start libvirtd
 sudo systemctl enable libvirtd
+echo "=== Программы успешно установлены ==="
+
+# 2. Настройка bash
+echo "[2/5] Настройка .bashrc..."
+cp -v ./bash/.bashrc ~/.bashrc
+echo "=== Bash конфиг применен ==="
+
+# 3. Установка шрифтов
+echo "[3/5] Установка шрифтов..."
+mkdir -p ~/.local/share/fonts
+cp -rv ./fonts/* ~/.local/share/fonts/
+fc-cache -f -v  # Обновление кэша шрифтов
+echo "=== Шрифты готовы для выбора в Tweaks ==="
+
+# 4. Применение keybinds
+echo "[4/5] Применение keybinds..."
+dconf load /org/gnome/desktop/wm/keybindings/ < ./keybinds/wm-keys.txt
+dconf load /org/gnome/settings-daemon/plugins/media-keys/ < ./keybinds/media-keys.txt
+dconf load /org/gnome/mutter/keybindings/ < ./keybinds/mutter-keys.txt
+dconf load /org/gnome/mutter/wayland/keybindings/ < ./keybinds/mutter-wayland-keys.txt
+dconf load /org/gnome/shell/keybindings/ < ./keybinds/shell-keys.txt
+echo "=== Хоткеи установлены  ==="
+
+# 5. Настройка терминала (kitty)
+echo "[5/5] Настройка kitty..."
+mkdir -p ~/.config/kitty
+cp -rv ./kitty/* ~/.config/kitty/
+echo "=== Kitty настроен  ==="
+
+# 6. Настройка терминала (kitty)
+echo "[5/5] Удаление ptyxis..."
+sudo dnf remove -y ptyxis
+echo "=== Терминал удален  ==="
+
+echo "Установка и настройка завершены!"

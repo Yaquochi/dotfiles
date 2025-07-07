@@ -3,6 +3,8 @@
 3) sudo chmod +x install.sh
 4) ./install.sh
 
+После установки в tweaks выбрать шрифты Roboto для первых двух и RobotoMono Nerd Font Mono для последнего пункта
+
 #Kitty
 copy and paste kitty.conf and current-theme.conf in ~/.config/kitty
 
@@ -30,3 +32,4 @@ dconf, kitty, git, easyeffects, tweaks, extension-manager, hiddify, telegram, ob
 #Script
 # Перед использованием прогреем sudo для дальнейшего удобства через sudo -v, затем /.install.sh
 # Скачиваем приложения, потом все из папок растаскиваем по директориям, не забываем про authostart, далее надо установить все драйвера, в фаерфокс дополнить pref.js
+Я остановился на 3 шаге, проверим 4 и далее. Удалить 
