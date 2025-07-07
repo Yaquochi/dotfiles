@@ -111,16 +111,16 @@ fi
 if [ "$STEP" -lt 8 ]; then
     echo "=== Настройка параметров GRUB... ==="
     sudo tee /etc/default/grub > /dev/null <<EOF
-    GRUB_TIMEOUT=5
-    GRUB_DISTRIBUTOR="$(sed 's, release .*$,,g' /etc/system-release)"
-    GRUB_DEFAULT=saved
-    GRUB_SAVEDEFAULT=true
-    GRUB_DISABLE_SUBMENU=y
-    GRUB_TERMINAL_OUTPUT="console"
-    GRUB_CMDLINE_LINUX="rhgb quiet"
-    GRUB_DISABLE_RECOVERY="true"
-    GRUB_ENABLE_BLSCFG=true
-    EOF
+GRUB_TIMEOUT=5
+GRUB_DISTRIBUTOR="$(sed 's, release .*$,,g' /etc/system-release)"
+GRUB_DEFAULT=saved
+GRUB_SAVEDEFAULT=true
+GRUB_DISABLE_SUBMENU=y
+GRUB_TERMINAL_OUTPUT="console"
+GRUB_CMDLINE_LINUX="rhgb quiet"
+GRUB_DISABLE_RECOVERY="true"
+GRUB_ENABLE_BLSCFG=true
+EOF
     
 # Генерируем новый конфиг grub
     sudo grub2-mkconfig -o /boot/grub2/grub.cfg
@@ -144,30 +144,30 @@ fi
     mkdir -p ~/.config/autostart
     # EasyEffects service (фоновый режим)
     cat > ~/.config/autostart/easyeffects-service.desktop <<EOF
-    [Desktop Entry]
-    Name=Easy Effects
-    Comment=Easy Effects Service
-    Exec=easyeffects --gapplication-service
-    Icon=com.github.wwmm.easyeffects
-    StartupNotify=false
-    Terminal=false
-    Type=Application
-    X-GNOME-Autostart-enabled=true
-    EOF
+[Desktop Entry]
+Name=Easy Effects
+Comment=Easy Effects Service
+Exec=easyeffects --gapplication-service
+Icon=com.github.wwmm.easyeffects
+StartupNotify=false
+Terminal=false
+Type=Application
+X-GNOME-Autostart-enabled=true
+EOF
     
     # Hiddify GUI
     cat > ~/.config/autostart/hiddify.desktop <<EOF
-    [Desktop Entry]
-    Type=Application
-    Version=2.0.5+20005
-    Name=Hiddify
-    GenericName=Hiddify
-    Icon=hiddify
-    Exec=hiddify %U
-    Keywords=Hiddify;Proxy;VPN;V2ray;Nekoray;Xray;Psiphon;OpenVPN;
-    StartupNotify=true
-    X-GNOME-Autostart-enabled=true
-    EOF
+[Desktop Entry]
+Type=Application
+Version=2.0.5+20005
+Name=Hiddify
+GenericName=Hiddify
+Icon=hiddify
+Exec=hiddify %U
+Keywords=Hiddify;Proxy;VPN;V2ray;Nekoray;Xray;Psiphon;OpenVPN;
+StartupNotify=true
+X-GNOME-Autostart-enabled=true
+EOF
     echo "=== Приложения поставлены в автозапуск ==="
     echo 10 > "$PROGRESS_FILE"
 fi
@@ -194,47 +194,47 @@ if [ "$STEP" -lt 12 ]; then
     if [ -f "$PREFS_FILE" ]; then
       echo "🛠 Вписываю настройки в $PREFS_FILE"
       cat >> "$PREFS_FILE" <<EOF
-    
-    // --- custom hardening prefs ---
-    user_pref("browser.uidensity", 1);
-    user_pref("extensions.pocket.api", "");
-    user_pref("extensions.pocket.enabled", false);
-    user_pref("extensions.pocket.site", "");
-    user_pref("extensions.pocket.oAuthConsumerKey", "");
-    user_pref("full-screen-api.transition-duration.enter", "0");
-    user_pref("full-screen-api.transition-duration.leave", "0");
-    user_pref("full-screen-api.warning.timeout", 0);
-    user_pref("privacy.trackingprotection.enabled", true);
-    user_pref("privacy.donottrackheader.enabled", true);
-    user_pref("toolkit.telemetry.archive.enabled", false);
-    user_pref("toolkit.telemetry.bhrPing.enabled", false);
-    user_pref("toolkit.telemetry.cachedClientID", "");
-    user_pref("toolkit.telemetry.firstShutdownPing.enabled", false);
-    user_pref("toolkit.telemetry.hybridContent.enabled", false);
-    user_pref("toolkit.telemetry.newProfilePing.enabled", false);
-    user_pref("toolkit.telemetry.previousBuildID", "");
-    user_pref("toolkit.telemetry.reportingpolicy.firstRun", false);
-    user_pref("toolkit.telemetry.server", "");
-    user_pref("toolkit.telemetry.server_owner", "");
-    user_pref("toolkit.telemetry.shutdownPingSender.enabled", false);
-    user_pref("toolkit.telemetry.unified", false);
-    user_pref("toolkit.telemetry.updatePing.enabled", false);
-    user_pref("datareporting.healthreport.infoURL", "");
-    user_pref("datareporting.healthreport.uploadEnabled", false);
-    user_pref("datareporting.policy.dataSubmissionEnabled", false);
-    user_pref("datareporting.policy.firstRunURL", "");
-    user_pref("browser.tabs.crashReporting.sendReport", false);
-    user_pref("browser.tabs.crashReporting.email", false);
-    user_pref("browser.tabs.crashReporting.emailMe", false);
-    user_pref("breakpad.reportURL", "");
-    user_pref("security.ssl.errorReporting.automatic", false);
-    user_pref("toolkit.crashreporter.infoURL", "");
-    user_pref("network.allow-experiments", false);
-    user_pref("dom.ipc.plugins.reportCrashURL", false);
-    user_pref("dom.ipc.plugins.flash.subprocess.crashreporter.enabled", false);
-    user_pref("browser.tabs.firefox-view", false);
-    user_pref("browser.tabs.tabmanager.enabled", false);
-    EOF
+
+// --- custom hardening prefs ---
+user_pref("browser.uidensity", 1);
+user_pref("extensions.pocket.api", "");
+user_pref("extensions.pocket.enabled", false);
+user_pref("extensions.pocket.site", "");
+user_pref("extensions.pocket.oAuthConsumerKey", "");
+user_pref("full-screen-api.transition-duration.enter", "0");
+user_pref("full-screen-api.transition-duration.leave", "0");
+user_pref("full-screen-api.warning.timeout", 0);
+user_pref("privacy.trackingprotection.enabled", true);
+user_pref("privacy.donottrackheader.enabled", true);
+user_pref("toolkit.telemetry.archive.enabled", false);
+user_pref("toolkit.telemetry.bhrPing.enabled", false);
+user_pref("toolkit.telemetry.cachedClientID", "");
+user_pref("toolkit.telemetry.firstShutdownPing.enabled", false);
+user_pref("toolkit.telemetry.hybridContent.enabled", false);
+user_pref("toolkit.telemetry.newProfilePing.enabled", false);
+user_pref("toolkit.telemetry.previousBuildID", "");
+user_pref("toolkit.telemetry.reportingpolicy.firstRun", false);
+user_pref("toolkit.telemetry.server", "");
+user_pref("toolkit.telemetry.server_owner", "");
+user_pref("toolkit.telemetry.shutdownPingSender.enabled", false);
+user_pref("toolkit.telemetry.unified", false);
+user_pref("toolkit.telemetry.updatePing.enabled", false);
+user_pref("datareporting.healthreport.infoURL", "");
+user_pref("datareporting.healthreport.uploadEnabled", false);
+user_pref("datareporting.policy.dataSubmissionEnabled", false);
+user_pref("datareporting.policy.firstRunURL", "");
+user_pref("browser.tabs.crashReporting.sendReport", false);
+user_pref("browser.tabs.crashReporting.email", false);
+user_pref("browser.tabs.crashReporting.emailMe", false);
+user_pref("breakpad.reportURL", "");
+user_pref("security.ssl.errorReporting.automatic", false);
+user_pref("toolkit.crashreporter.infoURL", "");
+user_pref("network.allow-experiments", false);
+user_pref("dom.ipc.plugins.reportCrashURL", false);
+user_pref("dom.ipc.plugins.flash.subprocess.crashreporter.enabled", false);
+user_pref("browser.tabs.firefox-view", false);
+user_pref("browser.tabs.tabmanager.enabled", false);
+EOF
     
       echo "=== Firefox настроен ==="
     else
