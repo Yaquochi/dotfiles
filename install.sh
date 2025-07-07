@@ -156,7 +156,7 @@ fi
     EOF
     
     # Hiddify GUI
-    cat > ~/.config/autostart//hiddify.desktop <<EOF
+    cat > ~/.config/autostart/hiddify.desktop <<EOF
     [Desktop Entry]
     Type=Application
     Version=2.0.5+20005
