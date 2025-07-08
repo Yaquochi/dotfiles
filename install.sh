@@ -134,6 +134,9 @@ if [ "$STEP" -lt 9 ]; then
     gnome-extensions list | xargs -n1 gnome-extensions disable
     mkdir -p ~/.local/share/gnome-shell/extensions
     cp -r ./extensions/* ~/.local/share/gnome-shell/extensions/
+    for ext in $(gnome-extensions list --user); do
+        gnome-extensions enable "$ext"
+    done
     echo "=== Расширения установлены ==="
     echo 9 > "$PROGRESS_FILE"
 fi
