@@ -11,5 +11,5 @@ volume-up=['<Super>r']
 
 [custom-keybindings/custom0]
 binding='<Super>h'
-command='kitty'
+command='alacritty'
 name='terminal'
