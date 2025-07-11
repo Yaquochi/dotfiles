@@ -32,7 +32,7 @@ fi
 # Установка пакетов
 if [ "$STEP" -lt 3 ]; then
     echo "Установка нужных пакетов..."
-    sudo dnf install -y flatpak kitty easyeffects gnome-tweaks gimp qbittorrent lollypop
+    sudo dnf install -y flatpak kitty easyeffects gnome-tweaks gimp qbittorrent lollypop tmux neovim python3-neovim
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     
     #Extension Manager
@@ -98,12 +98,16 @@ if [ "$STEP" -lt 6 ]; then
     echo 6 > "$PROGRESS_FILE"
 fi
 
-# Настройка kitty
+# Настройка kitty и tmux
 if [ "$STEP" -lt 7 ]; then
     echo "Настройка kitty..."
     mkdir -p ~/.config/kitty
     cp -rv ./kitty/* ~/.config/kitty/
     echo "=== Kitty настроен  ==="
+    echo "Настройка tmux..."
+    mkdir -p ~/.config/tmux/
+    cp -rv ./tmux/* ~/.config/tmux/
+    tmux source-file ~/.config/tmux/tmux.conf
     echo 7 > "$PROGRESS_FILE"
 fi
 
