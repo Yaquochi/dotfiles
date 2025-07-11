@@ -29,3 +29,5 @@ export LIBVIRT_DEFAULT_URI='qemu:///system'
 export TERM=xterm-256color
 export VISUAL=vi
 export EDITOR="$VISUAL"
+
+eval "$(fzf --bash)"
