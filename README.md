@@ -4,7 +4,7 @@
 4) ./install.sh
 5) закрыть firefox
 
-После установки в tweaks выбрать шрифты Roboto для первых двух и RobotoMono Nerd Font Mono для последнего пункта. Также в tweaks в клавиатуре выбрать переключение языка через capslock
+После установки в tweaks выбрать шрифты Roboto для первых двух и RobotoMono Nerd Font Mono для последнего пункта. В teaks поменять caps и esp местами. 
 
 Добавить в easyeffects конфиг с эквалайзером
 
@@ -17,12 +17,6 @@
 systemd-analyze
 systemd-analyze critical-chain
 systemd-analyze blame | head -n 20
-
-
-
-
-
-
 
 sudo systemctl enable docker.socket #если нужен docker, но не хочется ставить в автозагрузку
 sudo systemctl enable docker.service #полная автозагрузка docker

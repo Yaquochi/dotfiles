@@ -98,12 +98,12 @@ if [ "$STEP" -lt 6 ]; then
     echo 6 > "$PROGRESS_FILE"
 fi
 
-# Настройка kitty и tmux
+# Настройка alacritty и tmux
 if [ "$STEP" -lt 7 ]; then
-    echo "Настройка kitty..."
-    mkdir -p ~/.config/kitty
-    cp -rv ./kitty/* ~/.config/kitty/
-    echo "=== Kitty настроен  ==="
+    echo "Настройка alacritty..."
+    mkdir -p ~/.config/alacritty
+    cp -rv ./alacritty/* ~/.config/alacritty/
+    echo "=== Alacritty настроен  ==="
     echo "Настройка tmux..."
     mkdir -p ~/.config/tmux/
     cp -rv ./tmux/* ~/.config/tmux/
