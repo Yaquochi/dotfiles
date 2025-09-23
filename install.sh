@@ -37,7 +37,7 @@ if [ "$STEP" -lt 3 ]; then
     sudo dnf copr enable lihaohong/yazi -y
     sudo dnf install -y yazi
     cp -rv ./helix/* ~/.config/helix
-    chmod +x ./helix/yazi-picker.sh
+    chmod +x ~/.config/helix/yazi-picker.sh
  
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     
@@ -262,7 +262,7 @@ if [ "$STEP" -lt 14 ]; then
     newgrp docker
     sudo dnf install -y podman
     echo "=== Docker и podamn настроены  ==="
-    echo 10 > "$PROGRESS_FILE"
+    echo 14 > "$PROGRESS_FILE"
 fi
 
 
