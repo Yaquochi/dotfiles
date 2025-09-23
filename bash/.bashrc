@@ -28,10 +28,14 @@ export LIBVIRT_DEFAULT_URI='qemu:///system'
 
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:~/go/bin
+export PATH="$HOME/.cargo/bin:$PATH"
 
 export TERM=xterm-256color
-export VISUAL=vi
-export EDITOR="$VISUAL"
+export VISUAL=hx
+export EDITOR=hx
+export SUDO_EDITOR=hx
+export GIT_EDITOR=hx
+export SYSTEMD_EDITOR=hx
 
 eval "$(zoxide init bash)"
 eval "$(fzf --bash)"

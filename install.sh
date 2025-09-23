@@ -32,17 +32,18 @@ fi
 # Установка пакетов
 if [ "$STEP" -lt 3 ]; then
     echo "Установка нужных пакетов..."
-    sudo dnf install -y flatpak alacritty easyeffects gnome-tweaks gimp qbittorrent lollypop tmux neovim python3-neovim fzf zoxide
+    sudo dnf install -y flatpak easyeffects qbittorrent gnome-tweaks gimp helix tmux ripgrep fzf zoxide alacritty
+    sudo dnf install -y dnf-plugins-core
+    sudo dnf copr enable lihaohong/yazi -y
+    sudo dnf install -y yazi
+    cp -rv ./helix/* ~/.config/helix
+    chmod +x ./helix/yazi-picker.sh
+ 
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     
     #Extension Manager
     flatpak install -y flathub com.mattjakeman.ExtensionManager
-    
-    #Hiddify
-    curl -L -o hiddify.rpm https://github.com/hiddify/hiddify-app/releases/download/v2.0.5/Hiddify-rpm-x64.rpm
-    sudo dnf install -y ./hiddify.rpm
-    rm -f hiddify.rpm
-    
+        
     #Onlyoffice
     curl -L -o onlyoffice.rpm https://github.com/ONLYOFFICE/DesktopEditors/releases/latest/download/onlyoffice-desktopeditors.x86_64.rpm
     sudo dnf install -y ./onlyoffice.rpm
@@ -115,13 +116,13 @@ fi
 if [ "$STEP" -lt 8 ]; then
     echo "=== Настройка параметров GRUB... ==="
     sudo tee /etc/default/grub > /dev/null <<EOF
-GRUB_TIMEOUT=5
+GRUB_TIMEOUT=0
 GRUB_DISTRIBUTOR="$(sed 's, release .*$,,g' /etc/system-release)"
 GRUB_DEFAULT=saved
 GRUB_SAVEDEFAULT=true
 GRUB_DISABLE_SUBMENU=y
 GRUB_TERMINAL_OUTPUT="console"
-GRUB_CMDLINE_LINUX="rhgb quiet"
+GRUB_CMDLINE_LINUX=""
 GRUB_DISABLE_RECOVERY="true"
 GRUB_ENABLE_BLSCFG=true
 EOF
@@ -161,20 +162,7 @@ Terminal=false
 Type=Application
 X-GNOME-Autostart-enabled=true
 EOF
-    
-    # Hiddify GUI
-    cat > ~/.config/autostart/hiddify.desktop <<EOF
-[Desktop Entry]
-Type=Application
-Version=2.0.5+20005
-Name=Hiddify
-GenericName=Hiddify
-Icon=hiddify
-Exec=hiddify %U
-Keywords=Hiddify;Proxy;VPN;V2ray;Nekoray;Xray;Psiphon;OpenVPN;
-StartupNotify=true
-X-GNOME-Autostart-enabled=true
-EOF
+
     echo "=== Приложения поставлены в автозапуск ==="
     echo 10 > "$PROGRESS_FILE"
 fi
@@ -184,6 +172,10 @@ if [ "$STEP" -lt 11 ]; then
     echo "Настройка pipewire под аудиокарту Audient iD4 Mk2..."
     mkdir -p ~/.config/pipewire
     cp ./sound/pipewire.conf ~/.config/pipewire/pipewire.conf
+    systemctl --user enable pipewire
+    systemctl --user enable wireplumber
+    systemctl --user start pipewire wireplumber
+
     echo "=== Аудиокарта настроена ==="
     echo 11 > "$PROGRESS_FILE"
 fi
@@ -257,6 +249,22 @@ if [ "$STEP" -lt 13 ]; then
     echo "=== Картинки перемещены  ==="
     echo 13 > "$PROGRESS_FILE"
 fi
+
+# Настройка docker + podman
+if [ "$STEP" -lt 14 ]; then
+    echo "Настройка docker + podman..."
+    sudo dnf -y install dnf-plugins-core
+    sudo dnf-3 config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+    sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+    sudo systemctl enable --now docker
+    sudo groupadd docker
+    sudo usermod -aG docker $USER
+    newgrp docker
+    sudo dnf install -y podman
+    echo "=== Docker и podamn настроены  ==="
+    echo 10 > "$PROGRESS_FILE"
+fi
+
 
 # Удаление стандартного терминала
 echo "Удаление ptyxis..."
