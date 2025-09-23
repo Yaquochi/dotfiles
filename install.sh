@@ -43,7 +43,12 @@ if [ "$STEP" -lt 3 ]; then
     
     #Extension Manager
     flatpak install -y flathub com.mattjakeman.ExtensionManager
-        
+
+    #OpenLens
+    curl -L -o OpenLens.rpm https://github.com/MuhammedKalkan/OpenLens/releases/download/v6.5.2-366/OpenLens-6.5.2-366.x86_64.rpm
+    sudo dnf install -y ./OpenLen
+    rm -f OpenLens
+    
     #Onlyoffice
     curl -L -o onlyoffice.rpm https://github.com/ONLYOFFICE/DesktopEditors/releases/latest/download/onlyoffice-desktopeditors.x86_64.rpm
     sudo dnf install -y ./onlyoffice.rpm
@@ -54,6 +59,9 @@ if [ "$STEP" -lt 3 ]; then
     
     #Telegram
     flatpak install -y flathub org.telegram.desktop 
+
+    #Discord
+    flatpak install -y flathub com.discordapp.Discord
     
     #OBS Studio
     flatpak install -y flathub com.obsproject.Studio
