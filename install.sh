@@ -46,8 +46,8 @@ if [ "$STEP" -lt 3 ]; then
 
     #OpenLens
     curl -L -o OpenLens.rpm https://github.com/MuhammedKalkan/OpenLens/releases/download/v6.5.2-366/OpenLens-6.5.2-366.x86_64.rpm
-    sudo dnf install -y ./OpenLen
-    rm -f OpenLens
+    sudo dnf install -y OpenLens.rpm
+    rm -f OpenLens.rpm
     
     #Onlyoffice
     curl -L -o onlyoffice.rpm https://github.com/ONLYOFFICE/DesktopEditors/releases/latest/download/onlyoffice-desktopeditors.x86_64.rpm
