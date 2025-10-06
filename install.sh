@@ -32,7 +32,7 @@ fi
 # Установка пакетов
 if [ "$STEP" -lt 3 ]; then
     echo "Установка нужных пакетов..."
-    sudo dnf install -y flatpak easyeffects qbittorrent gnome-tweaks gimp helix tmux ripgrep fzf zoxide alacritty
+    sudo dnf install -y flatpak easyeffects qbittorrent gnome-tweaks gimp helix tmux alacritty k9s ripgrep fzf zoxide 
     sudo dnf install -y dnf-plugins-core
     sudo dnf copr enable lihaohong/yazi -y
     sudo dnf install -y yazi
