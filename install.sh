@@ -32,7 +32,7 @@ fi
 # Установка пакетов
 if [ "$STEP" -lt 3 ]; then
     echo "Установка нужных пакетов..."
-    sudo dnf install -y flatpak easyeffects qbittorrent gnome-tweaks gimp helix tmux ripgrep fzf zoxide alacritty
+    sudo dnf install -y flatpak easyeffects qbittorrent gnome-tweaks gimp helix tmux ripgrep fzf zoxide alacritty k9s
     sudo dnf install -y dnf-plugins-core
     sudo dnf copr enable lihaohong/yazi -y
     sudo dnf install -y yazi
@@ -43,12 +43,7 @@ if [ "$STEP" -lt 3 ]; then
     
     #Extension Manager
     flatpak install -y flathub com.mattjakeman.ExtensionManager
-
-    #OpenLens
-    curl -L -o OpenLens.rpm https://github.com/MuhammedKalkan/OpenLens/releases/download/v6.5.2-366/OpenLens-6.5.2-366.x86_64.rpm
-    sudo dnf install -y OpenLens.rpm
-    rm -f OpenLens.rpm
-    
+   
     #Onlyoffice
     curl -L -o onlyoffice.rpm https://github.com/ONLYOFFICE/DesktopEditors/releases/latest/download/onlyoffice-desktopeditors.x86_64.rpm
     sudo dnf install -y ./onlyoffice.rpm
