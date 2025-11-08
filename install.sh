@@ -104,9 +104,9 @@ if [ "$STEP" -lt 6 ]; then
     echo 6 > "$PROGRESS_FILE"
 fi
 
-# Настройка alacritty и tmux
+# Настройка alacritty, tmux и k9s
 if [ "$STEP" -lt 7 ]; then
-    echo "Настройка alacritty..."
+    echo "Настройка alacritty, tmux and k9s..."
     mkdir -p ~/.config/alacritty
     cp -rv ./alacritty/* ~/.config/alacritty/
     echo "=== Alacritty настроен  ==="
@@ -114,6 +114,10 @@ if [ "$STEP" -lt 7 ]; then
     mkdir -p ~/.config/tmux/
     cp -rv ./tmux/* ~/.config/tmux/
     tmux source-file ~/.config/tmux/tmux.conf
+    echo "=== Tmux настроен  ==="
+    echo "Настройка k9s..."
+    cp -rv ./k9s/* ~/.config/k9s/
+    echo "=== K9s настроен  ==="
     echo 7 > "$PROGRESS_FILE"
 fi
 
