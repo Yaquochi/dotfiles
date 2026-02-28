@@ -33,14 +33,10 @@ fi
 if [ "$STEP" -lt 3 ]; then
     echo "Установка нужных пакетов..."
 
-    sudo dnf install -y flatpak easyeffects qbittorrent gnome-tweaks gimp helix tmux alacritty k9s ripgrep fzf zoxide 
+    sudo dnf install -y flatpak easyeffects qbittorrent gnome-tweaks gimp vim tmux alacritty k9s
 
     sudo dnf install -y dnf-plugins-core
-    sudo dnf copr enable lihaohong/yazi -y
-    sudo dnf install -y yazi
-    cp -rv ./helix/* ~/.config/helix
-    chmod +x ~/.config/helix/yazi-picker.sh
- 
+
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     
     #Extension Manager
@@ -104,16 +100,18 @@ if [ "$STEP" -lt 6 ]; then
     echo 6 > "$PROGRESS_FILE"
 fi
 
-# Настройка alacritty, tmux и k9s
+# Настройка alacritty, vim, tmux и k9s
 if [ "$STEP" -lt 7 ]; then
-    echo "Настройка alacritty, tmux and k9s..."
+    echo "Настройка alacritty, vim, tmux and k9s..."
     mkdir -p ~/.config/alacritty
     cp -rv ./alacritty/* ~/.config/alacritty/
     echo "=== Alacritty настроен  ==="
+    echo "Настройка vim"
+    cp -v ./vim/.vimrc ~/.vimrc
+    echo "=== Vim настроен  ==="
     echo "Настройка tmux..."
     mkdir -p ~/.config/tmux/
     cp -rv ./tmux/* ~/.config/tmux/
-    tmux source-file ~/.config/tmux/tmux.conf
     echo "=== Tmux настроен  ==="
     echo "Настройка k9s..."
     cp -rv ./k9s/* ~/.config/k9s/
@@ -125,7 +123,7 @@ fi
 if [ "$STEP" -lt 8 ]; then
     echo "=== Настройка параметров GRUB... ==="
     sudo tee /etc/default/grub > /dev/null <<EOF
-GRUB_TIMEOUT=0
+GRUB_TIMEOUT=2
 GRUB_DISTRIBUTOR="$(sed 's, release .*$,,g' /etc/system-release)"
 GRUB_DEFAULT=saved
 GRUB_SAVEDEFAULT=true
@@ -171,7 +169,6 @@ Terminal=false
 Type=Application
 X-GNOME-Autostart-enabled=true
 EOF
-
     echo "=== Приложения поставлены в автозапуск ==="
     echo 10 > "$PROGRESS_FILE"
 fi
