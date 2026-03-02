@@ -31,3 +31,10 @@ export EDITOR=vim
 export SUDO_EDITOR=vim
 export GIT_EDITOR=vim
 export SYSTEMD_EDITOR=vim
+
+alias k-demo='export KUBECONFIG=~/.kube/config_demo && echo "Demo"'
+alias k-lanit='export KUBECONFIG=~/.kube/config_lanit && echo "Test&Dev&DKS"'
+alias k-presale='export KUBECONFIG=~/.kube/config_presale && echo "Presale"'
+alias k-status='echo "Текущий KUBECONFIG: $KUBECONFIG" && kubectl config current-context 2>/dev/null'
+
+export K9S_FEATURE_GATE_NODE_SHELL=true
