@@ -35,6 +35,9 @@ if [ "$STEP" -lt 3 ]; then
 
     sudo dnf install -y flatpak easyeffects qbittorrent gnome-tweaks gimp vim tmux alacritty k9s
 
+    curl -L https://github.com/gokcehan/lf/releases/latest/download/lf-linux-amd64.tar.gz | tar -xz
+    sudo mv lf /usr/local/bin/
+
     sudo dnf install -y dnf-plugins-core
 
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -100,7 +103,7 @@ if [ "$STEP" -lt 6 ]; then
     echo 6 > "$PROGRESS_FILE"
 fi
 
-# Настройка alacritty, vim, tmux и k9s
+# Настройка alacritty, vim, tmux, lf и k9s
 if [ "$STEP" -lt 7 ]; then
     echo "Настройка alacritty, vim, tmux and k9s..."
     mkdir -p ~/.config/alacritty
@@ -113,6 +116,10 @@ if [ "$STEP" -lt 7 ]; then
     mkdir -p ~/.config/tmux/
     cp -rv ./tmux/* ~/.config/tmux/
     echo "=== Tmux настроен  ==="
+    echo "Настройка lf..."
+    mkdir -p ~/.config/lf
+    cp -rv ./lf/* ~/.config/lf/
+    echo "=== Lf настроен  ==="
     echo "Настройка k9s..."
     cp -rv ./k9s/* ~/.config/k9s/
     echo "=== K9s настроен  ==="
